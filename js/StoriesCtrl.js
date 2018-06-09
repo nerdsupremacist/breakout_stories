@@ -30,7 +30,7 @@ app.controller('StoriesCtrl', function($scope, $routeParams, $http) {
         loadPostings((postings) => {
             if (postings !== null) callback(null);
             var withMedia = postings.filter((x) => x.media !== null && x.user.profilePic !== null);
-            var byTeams = postings.bulked((x) => x.user.participant.teamId );
+            var byTeams = withMedia.bulked((x) => x.user.participant.teamId );
             var stories = byTeams.map((x) => {
                 var user = x[0].user;
                 var posts = x;
