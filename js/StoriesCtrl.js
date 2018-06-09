@@ -51,7 +51,7 @@ app.controller('StoriesCtrl', function($scope, $routeParams, $http) {
     items: x.posts.map((post) => {
         return {
             id: post.id,
-            type: "photo",
+            type: post.media.type == "IMAGE" ? "photo" : "video",
             src: post.media.url
         }
     })
