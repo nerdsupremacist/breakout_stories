@@ -29,7 +29,7 @@ app.controller('StoriesCtrl', function($scope, $routeParams, $http) {
     function loadStories(callback) {
         loadPostings((postings) => {
             if (postings !== null) callback(null);
-            var withMedia = postings.filter((x) => x.media !== null && x.user.profilePic !== null);
+            var withMedia = postings.filter((x) => x.media !== null);
             var byTeams = withMedia.bulked((x) => x.user.participant.teamId );
             var stories = byTeams.map((x) => {
                 var user = x[0].user;
@@ -45,14 +45,16 @@ app.controller('StoriesCtrl', function($scope, $routeParams, $http) {
             var object = stories.map((x) => {
                 return {
     id: x.user.participant.teamId,
-    photo: x.user.profilePic.url,
+    photo: (x.user.profilePic & x.user.profilePic !== null) ? x.user.profilePic.url : "https://break-out.org/img/placeholder_profile_pic.jpg",
     name: x.user.participant.teamName,
     lastUpdated: x.lastUpdated,
     items: x.posts.map((post) => {
         return {
             id: post.id,
             type: post.media.type == "IMAGE" ? "photo" : "video",
-            src: post.media.url
+            src: post.media.url,
+            link: "https://break-out.org/post/" + post.id,
+            linkText: post.text
         }
     })
 }
@@ -65,9 +67,8 @@ app.controller('StoriesCtrl', function($scope, $routeParams, $http) {
     list: false,
     openEffect: true,
     cubeEffect: false,
-    autoFullScreen: false,
     backButton: true,
-    backNative: false,
+    backNative: true,
     previousTap: true,
     stories: object});
 
