@@ -46,7 +46,7 @@ app.controller('StoriesCtrl', function($scope, $routeParams, $http) {
                 var pic = x.user.profilePic ;
                 return {
     id: x.user.participant.teamId,
-    photo: pic !== null ? pic.url.replace("image/upload/", "image/upload/w_100") : "https://break-out.org/img/placeholder_profile_pic.jpg",
+    photo: pic !== null && pic.url !== null ? pic.url.replace("image/upload/", "image/upload/w_100") : "https://break-out.org/img/placeholder_profile_pic.jpg",
     name: x.user.participant.teamName,
     lastUpdated: x.lastUpdated,
     items: x.posts.map((post) => {
