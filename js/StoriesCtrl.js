@@ -46,14 +46,14 @@ app.controller('StoriesCtrl', function($scope, $routeParams, $http) {
                 var pic = x.user.profilePic ;
                 return {
     id: x.user.participant.teamId,
-    photo: pic !== null ? pic.url : "https://break-out.org/img/placeholder_profile_pic.jpg",
+    photo: pic !== null ? pic.url.replace("image/upload/", "image/upload/w_100") : "https://break-out.org/img/placeholder_profile_pic.jpg",
     name: x.user.participant.teamName,
     lastUpdated: x.lastUpdated,
     items: x.posts.map((post) => {
         return {
             id: post.id,
             type: post.media.type == "IMAGE" ? "photo" : "video",
-            src: post.media.url,
+            src: post.media.url.replace("image/upload/", "image/upload/w_500"),
             link: "https://break-out.org/post/" + post.id,
             linkText: post.text
         }
