@@ -58,7 +58,7 @@ app.controller('StoriesCtrl', function($scope, $routeParams, $http) {
 }
             });
 
-            stories = new Zuck({
+            stories = new Zuck('stories', {
     id: '',
     skin: 'snapgram',
     avatars: true,
