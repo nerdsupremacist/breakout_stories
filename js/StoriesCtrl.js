@@ -69,7 +69,7 @@ app.controller('StoriesCtrl', function($scope, $routeParams, $http) {
     cubeEffect: false,
     backButton: true,
     autoFullScreen: false,
-    backNative: true,
+    backNative: false,
     previousTap: true,
     stories: object});
             callback(stories);
