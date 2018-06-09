@@ -41,6 +41,36 @@ app.controller('StoriesCtrl', function($scope, $routeParams, $http) {
                     lastUpdated: lastUpdated
                 }
             });
+
+            var object = stories.map((x) => {
+                return {
+    id: x.user.participant.teamId,
+    photo: x.user.media.url,
+    name: x.user.participant.teamName,
+    lastUpdated: x.lastUpdated,
+    items: x.posts.map((post) => {
+        return {
+            id: post.id,
+            type: "photo",
+            src: post.media.url
+        }
+    })
+}
+            });
+
+            stories = new Zuck({
+    id: '',
+    skin: 'snapgram',
+    avatars: true,
+    list: false,
+    openEffect: true,
+    cubeEffect: false,
+    autoFullScreen: false,
+    backButton: true,
+    backNative: false,
+    previousTap: true,
+    stories: objects});
+    
             callback(stories);
         });
     }
