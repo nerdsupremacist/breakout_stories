@@ -72,7 +72,6 @@ app.controller('StoriesCtrl', function($scope, $routeParams, $http) {
     backNative: true,
     previousTap: true,
     stories: object});
-
             callback(stories);
         });
     }
