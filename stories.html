@@ -10,7 +10,7 @@
         </a>
         <ul class="items">
             <li ng-repeat="post in story.posts" data-id="{{post.id}}" data-time="{{post.date}}" class="{{story.items.seen}}">
-                <a href="{{post.media.url}}" data-type="{{post.media.type}}">
+                <a href="{{post.media.url}}" data-type="photo">
                     <img src="{{post.media.url}}">
                 </a>
             </li>
