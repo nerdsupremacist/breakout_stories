@@ -68,6 +68,7 @@ app.controller('StoriesCtrl', function($scope, $routeParams, $http) {
     openEffect: true,
     cubeEffect: false,
     backButton: true,
+    autoFullScreen: false,
     backNative: true,
     previousTap: true,
     stories: object});
